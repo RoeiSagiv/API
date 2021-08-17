@@ -1,3 +1,4 @@
+//Class of type.
 class TypeClass 
 {
     constructor(typeName)
@@ -13,7 +14,7 @@ class TypeClass
     getResult()
     {
         //fetch the resulted string from relevent API
-       // throw new Error("Abstract method! please implement it in the type class.");
+       //throw new Error("Abstract method! please implement it in the type class.");
     }
 
     getType()

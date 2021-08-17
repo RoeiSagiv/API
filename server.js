@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const schemas = require('./schemas');
-const types = require('./typeEnum');
 const service = require('./service');
 const middleware = require('./middleware');
 const bodyParser = require("body-parser");
@@ -24,12 +23,12 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-app.get('/api/surprise',middleware(schemas.object1, 'query'), (req, res) => {
+app.get('/api/surprise',middleware(schemas.query_params, 'query'), (req, res) => {
     
-    const { userFullName, userBirthYear } = req.query;
-    if(userFullName && userBirthYear)
+    const { name, birth_year } = req.query;
+    if(name && birth_year)
     {
-        service.getResponse(userFullName, userBirthYear).then(function(data) {
+        service.getResponse(name, birth_year).then(function(data) {
             res.send(data);
         });
         

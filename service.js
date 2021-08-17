@@ -6,14 +6,15 @@ const cors = require('cors');
 
 //const SERVER_URL = "http://127.0.0.1:3000"
 
+//Create the stats object of the requests.
 let stats = {"requests": 0,
 "distribution" : [{"type": typeEnum.type[0], "count": 0},{"type": typeEnum.type[1], "count": 0},{"type": typeEnum.type[2], "count": 0}]
 }
 
-
+//Function check which type is true, if more then one type is true -> random between true type and return an object of type and result.
 function getResponse(userFullName, userBirthYear)
 {
-    //function check which type is true, if more then one type is true -> random between true type.
+    
     let rndInt = 0;
     let chuckNorrisJoke = new ChuckNorrisJoke();
     let kanyeWestQuote = new KanyeWestQuote();
@@ -54,11 +55,20 @@ function getResponse(userFullName, userBirthYear)
     });
 }
 
+//Function that return the object stats.
 function getStats()
 {
-    return stats;
+  if(stats["requests"] == 0)
+  {
+    let statsZero = {"requests": 0,"distribution" : []};
+    return statsZero;
+  }
+  
+  return stats;
+   
 }
 
+//Function which update the stats object accoridng to request that been done.
 function updateStats(stats ,type)
 {
     stats["requests"]++;
@@ -71,6 +81,14 @@ function updateStats(stats ,type)
     }
 }
 
+function updateStatsDB() {
+  
+}
+
+
+function updateStatsWithOutDB() {
+  
+}
 
 
 /*function postData(url, data) {

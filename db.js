@@ -37,6 +37,14 @@ module.exports = {
     },
     getAllItems: (callback) => {
         return _items.find({}).toArray(callback);
+    },
+    clear:()=>
+    {
+        _items.forEach(eachColl => db[eachColl].remove({}))
+    },
+    updateStats:(item)=>{
+        _items.clear();
+        addItem(item);
     }
 };
 
